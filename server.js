@@ -11,7 +11,7 @@ app.listen(port, () => {
 });
 
 app.get('/', (request, response) => {
-    response.send(index.html);
+    response.render('index.html');
 });
 
 app.get('/add', (req, res) => {
