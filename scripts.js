@@ -38,15 +38,48 @@ const addCards = (items) => {
     });
 }
 
-const formSumitted = () => {
+const formSubmitted = () => {
     let formData = {};
-    formData.firstName = $('#first_name').val();
-    formData.lastName = $('#last_name').val();
-    formData.password = $('#password').val();
-    formData.email = $('#email').val();
+    formData.title = $('#title').val();
+    formData.subTitle = $('#subTitle').val();
+    formData.path = $('#path').val();
+    formData.description = $('#description').val();
 
     console.log(formData);
+    postButterfly(formData);
 }
+
+function postButterfly(butterfly){
+    $.ajax({
+        url:'/api/butterfly',
+        type:'POST',
+        data:butterfly,
+        success: (result)=>{
+            if (result.statusCode === 201) {
+                alert('butterfly post successful');
+            }
+        }
+    });
+}
+
+function getAllButterflies(){
+    $.get('/api/butterfly', (response)=>{
+        // response's data is in array format, so we can use it
+        if (response.statusCode === 200) {
+            addCards(response.data);
+        }
+    });
+}
+$(document).ready(function(){
+    $('.materialboxed').materialbox();
+    $('#formSubmit').click(()=>{
+        formSubmitted();
+    });
+    $('.modal').modal();
+    getAllButterflies();
+});
+
+
 
 $(document).ready(function(){
     $('.materialboxed').materialbox();
@@ -55,4 +88,5 @@ $(document).ready(function(){
     });
     addCards(cardList);
     $('.modal').modal();
+    getAllButterflies();
 });
