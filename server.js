@@ -7,7 +7,7 @@ let router = require('./routes/router');
 app.use(express.static(__dirname + '/'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/api/butterfly',router);
+app.use('/api/butterfly', router);
 
 
 app.listen(port, () => {
