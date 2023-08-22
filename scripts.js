@@ -57,6 +57,7 @@ function postButterfly(butterfly){
         success: (result)=>{
             if (result.statusCode === 201) {
                 alert('butterfly post successful');
+                location.reload();
             }
         }
     });
@@ -70,21 +71,12 @@ function getAllButterflies(){
         }
     });
 }
+
+
 $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('#formSubmit').click(()=>{
         formSubmitted();
-    });
-    $('.modal').modal();
-    getAllButterflies();
-});
-
-
-
-$(document).ready(function(){
-    $('.materialboxed').materialbox();
-    $('#formSubmit').click(()=>{
-        formSumitted();
     });
     addCards(cardList);
     $('.modal').modal();

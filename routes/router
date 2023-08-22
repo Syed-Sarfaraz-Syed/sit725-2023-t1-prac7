@@ -1,0 +1,13 @@
+let express = require('express');
+let router = express.Router();
+let controller = require('../controller/controller');
+
+router.post('/', function(req,res){
+    controller.postButterfly(req,res);
+});
+
+router.get('/', (req,res)=>{
+    controller.getAllButterflies(req,res);
+});
+
+module.exports = router;
